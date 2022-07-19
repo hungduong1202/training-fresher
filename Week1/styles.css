@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+.btn-start {
+  background-color: #fa923f;
+  color: white;
+  border: 2px solid #512751;
+  border-radius: 15px;
+  margin: 15px auto;
+  display: block;
+  cursor: pointer;
+  width: 10rem;
+  height: 2rem;
+}
+
+.container {
+  width: 800px;
+  height: 900px;
+  border: 5px solid black;
+  margin: 15px auto;
+  background-image: url(./courses/calendar.png);
+  background-size: cover;
+  display: grid;
+  box-shadow: 6px 6px 20px gray;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    "door1 door7 door9 door14"
+    "door2 door4 door22 door10"
+    "door8 door3 door5 door23"
+    "door11 door15 door6 door21"
+    "door20 door19 door16 door17"
+    "door18 door12 door13 door24";
+}
+
+.image {
+  /* background-image: none; */
+  background-size: cover;
+  background-position: center;
+}
+
+.text {
+  height: 100%;
+  width: 100%;
+  color: white;
+  padding: 10px;
+  border: 2px solid black;
+  cursor: pointer;
+  transition: opacity 1.5s;
+}
