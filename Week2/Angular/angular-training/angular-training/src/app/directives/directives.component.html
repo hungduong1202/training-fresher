@@ -1,0 +1,149 @@
+<h1 class="bg-primary text-white">STRUCTURAL DIRECTIVES</h1>
+
+<h4>*ngIf</h4>
+
+<p *ngIf="isLogin; else loginTemplate">Welcome</p>
+
+<ng-template #loginTemplate>
+  <p>Please Login</p>
+</ng-template>
+
+<button
+  class="btn"
+  (click)="isLogin = !isLogin"
+  [ngClass]="isLogin ? 'btn-danger' : 'btn-success'"
+  [innerHTML]="isLogin ? 'Logout' : 'Login'"
+>
+  Toggle Login
+</button>
+
+<hr />
+<h4>*ngFor</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Position</th>
+      <th>Even</th>
+      <th>Odd</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let user of users;
+        let i = index;
+        let isFirst = first;
+        let isLast = last;
+        let even = even;
+        let odd = odd;
+        let count = count
+      "
+    >
+      <!-- let i = index -->
+      <!-- let isFirst = first -->
+      <!-- let isLast = last -->
+      <!-- let even = even -->
+      <!-- let odd = odd -->
+      <!-- let count = count -->
+      <td>{{ i + 1 }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ isFirst ? "first" : "" || isLast ? "last" : "" }}</td>
+      <td>{{ even }}</td>
+      <td>{{ odd }}</td>
+      <td>{{ count }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h4>[ngSwitch]</h4>
+
+<div *ngFor="let user of users">
+  <div [ngSwitch]="user.status">
+    <p *ngSwitchCase="'Active'" class="bg-success">{{ user.name }}</p>
+    <p *ngSwitchCase="'Pending'" class="bg-warning">{{ user.name }}</p>
+    <p *ngSwitchDefault class="bg-danger">{{ user.name }}</p>
+  </div>
+</div>
+
+<hr />
+
+<h4>[ngClass]</h4>
+
+<button
+  *ngFor="let chair of chairs"
+  class="p-3 border-none mx-2"
+  [ngClass]="{
+    booked: chair.status === chairStatus.Booked,
+    avaiable: chair.status === chairStatus.Avaiable,
+    booking: chair.status === chairStatus.Booking
+  }"
+  (click)="changeChairStatus(chair)"
+  [disabled]="chair.status === chairStatus.Booked"
+>
+  {{ chair.name }}
+</button>
+
+<hr />
+
+<h4>[ngStyle]</h4>
+
+<div class="form-group my-3">
+  <label for="Color">Color</label>
+  <input type="text" class="form-control" [(ngModel)]="currentStyle.color" />
+</div>
+<div class="form-group my-3">
+  <label for="Color">Background Color</label>
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="currentStyle.background"
+  />
+</div>
+
+<p [ngStyle]="currentStyle">Hello</p>
+
+<br />
+
+<hr />
+
+<h4>ng-template</h4>
+
+<!-- ng-template như 1 component nhỏ có thể tái sử dụng ở trong component cha -->
+
+<ng-template #ngTemplate let-currentFramework="framework"
+  ><p>
+    <span [innerHTML]="currentFramework ? currentFramework : 'None'">{{
+      currentFramework
+    }}</span>
+    Training.
+  </p></ng-template
+>
+
+<ng-container
+  *ngTemplateOutlet="ngTemplate; context: { framework: 'Angular' }"
+></ng-container>
+<ng-container
+  *ngTemplateOutlet="ngTemplate; context: { framework: 'ReactJS' }"
+></ng-container
+><ng-container
+  *ngTemplateOutlet="ngTemplate; context: { framework: 'VueJS' }"
+></ng-container>
+<ng-container *ngTemplateOutlet="ngTemplate"></ng-container>
+
+<br />
+
+<h4>ng-content</h4>
+
+<app-demo-ng-content>
+  <header>Header</header>
+  <div class="content">Content</div>
+  <footer id="footer">Footer</footer>
+</app-demo-ng-content>

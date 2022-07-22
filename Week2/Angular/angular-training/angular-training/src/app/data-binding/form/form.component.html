@@ -1,0 +1,34 @@
+<div class="card container">
+  <div class="card-header">
+    <h1>Register form</h1>
+  </div>
+
+  <form class="card-body" (submit)="onSubmit()">
+    <div class="form-group mb-3">
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        placeholder="Enter your email"
+        class="form-control"
+        #emailInput
+        (keyup)="email = emailInput.value"
+      />
+    </div>
+    <div class="form-group mb-3">
+      <label for="fullname">FullName:</label>
+      <input
+        type="text"
+        placeholder="Enter your full name"
+        class="form-control"
+        [(ngModel)]="fullName"
+        name="fullName"
+      />
+    </div>
+    <button type="submit" class="btn btn-success mb-3">Submit</button>
+  </form>
+
+  <div class="card-footer">
+    <p>Email: {{ email }}</p>
+    <p>Full Name: {{ fullName }}</p>
+  </div>
+</div>

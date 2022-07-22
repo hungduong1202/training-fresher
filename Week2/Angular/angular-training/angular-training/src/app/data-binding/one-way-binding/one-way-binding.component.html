@@ -1,0 +1,16 @@
+<h1 class="bg-primary text-white">Interpolation Binding</h1>
+<p>{{ username }}</p>
+
+<p>{{ populateUserName() }}</p>
+
+<input
+  type="text"
+  #valueInput
+  value="{{ username }}"
+  (keyup)="onChange(valueInput.value)"
+/>
+
+<br />
+<br />
+
+<hr />
