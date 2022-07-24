@@ -1,0 +1,6 @@
+<!-- Input -->
+<div class="row">
+  <div class="col-4" *ngFor="let user of users">
+    <app-card [user]="user" (remove)="handleRemove($event)"></app-card>
+  </div>
+</div>
