@@ -14,12 +14,25 @@
   <div class="collapse navbar-collapse" id="collapsibleNavId">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Home <span class="sr-only">(current)</span></a
+        <a [routerLink]="'movie-list'" class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="'about'" class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="'faq'" class="nav-link" href="#">FAQ</a>
+      </li>
+      <li class="nav-item">
+        <a
+          [routerLink]="['movie', '123']"
+          [queryParams]="{ userId: 10, bookingId: 200 }"
+          class="nav-link"
+          href="#"
+          >Movie</a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a [routerLink]="'movie-list'" class="nav-link" href="#">Movie List</a>
       </li>
     </ul>
   </div>
