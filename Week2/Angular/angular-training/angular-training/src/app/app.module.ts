@@ -7,7 +7,8 @@ import { DataBindingModule } from './data-binding/data-binding.module';
 import { DirectivesModule } from './directives/directives.module';
 import { HeaderComponent } from './header/header.component';
 import { HomeModule } from './home/home.module';
-import { InputOutputModule } from './input-output/input-output.module';
+import { DemoInputOutputModule } from './input-output/demo-input-output/demo-input-output.module';
+import { SeatBookingModule } from './input-output/seat-booking/seat-booking.module';
 import { LoginModule } from './login/login.module';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LoginModule } from './login/login.module';
     DataBindingModule,
     DirectivesModule,
     LoginModule,
-    InputOutputModule,
+    DemoInputOutputModule,
+    SeatBookingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

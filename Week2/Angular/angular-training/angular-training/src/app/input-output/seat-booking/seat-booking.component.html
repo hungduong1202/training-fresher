@@ -1,0 +1,29 @@
+<div class="w-50 mt-5 mx-auto">
+  <h1 class="text-warning text-center py-3">SEAT BOOKING</h1>
+  <div class="row">
+    <div class="col-6">
+      <h5 class="py-2 bg-dark text-center text-white">Driver</h5>
+      <div class="d-flex flex-wrap">
+        <app-seat
+          *ngFor="let seat of seatList"
+          [seat]="seat"
+          class="w-25"
+          (selectSeat)="handleClick($event)"
+        ></app-seat>
+      </div>
+    </div>
+    <div class="col-6">
+      <h5 class="text-warning">
+        Selected Seat List({{ selectedSeat.length }})
+      </h5>
+      <p *ngFor="let seat of selectedSeat">
+        Seat: {{ seat.seatName }} | {{ seat.price }}$<span
+          class="text-danger cancel"
+          (click)="unselectSeat(seat)"
+          >[Cancel]</span
+        >
+      </p>
+      <h5 class="text-danger">Total: {{ sum() }}$</h5>
+    </div>
+  </div>
+</div>

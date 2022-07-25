@@ -1,0 +1,13 @@
+<div class="mt-5 w-50 mx-auto">
+  <div class="row">
+    <div class="col-12 my-3">
+      <button class="btn btn-info" (click)="handleDiscount()">Discount</button>
+    </div>
+    <div class="col-4" *ngFor="let product of productList">
+      <app-product
+        [productItem]="product"
+        (remove)="handleRemove($event)"
+      ></app-product>
+    </div>
+  </div>
+</div>

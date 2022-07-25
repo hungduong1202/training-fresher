@@ -1,0 +1,8 @@
+<button
+  class="seat"
+  [ngClass]="{ booked: seat.status, booking: isSelectedSeat }"
+  (click)="handleClick()"
+  [disabled]="seat.status"
+>
+  {{ seat.id }}
+</button>

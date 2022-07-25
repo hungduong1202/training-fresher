@@ -1,0 +1,23 @@
+.seat {
+  border-radius: 10px;
+  border: none;
+  height: 35px;
+  width: 35px;
+  margin: 5px;
+  &:hover {
+    border: orange solid 2px;
+  }
+}
+
+.booked {
+  color: white;
+  background: gray;
+  cursor: not-allowed;
+  &:hover {
+    border: none;
+  }
+}
+
+.booking {
+  background-color: green;
+}
