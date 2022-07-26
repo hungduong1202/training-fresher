@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ManagementService } from 'src/app/shared/services/management.service';
 import { LoginComponent } from './login/login.component';
+import { AdminGuard } from 'src/app/core/guards/admin.guard';
+import { FormGuard } from 'src/app/core/guards/form.guard';
 
 const routes: Routes = [
   {
@@ -21,6 +23,7 @@ const routes: Routes = [
       {
         path: 'faq',
         component: FaqComponent,
+        canActivate: [AdminGuard],
       },
       {
         path: 'movie-list',
@@ -37,6 +40,7 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+        canDeactivate: [FormGuard],
       },
     ],
   },

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://movienew.cybersoft.edu.vn/api',
+  apiUrl: 'https://movienew.cybersoft.edu.vn/api',
 };
 
 /*

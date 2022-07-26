@@ -13,7 +13,7 @@ export class LocalStorageService {
     const stringify = localStorage.getItem(key);
 
     if (stringify) {
-      return JSON.stringify;
+      return JSON.parse(stringify);
     }
     return null;
   }

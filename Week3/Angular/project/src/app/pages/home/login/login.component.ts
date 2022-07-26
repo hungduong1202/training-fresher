@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
       Validators.maxLength(16),
     ]),
   });
+
+  @HostListener('window:beforeunload', ['click']) canDeactivate() {
+    return !this.loginForm.dirty;
+  }
 
   constructor(
     private authService: AuthService,
