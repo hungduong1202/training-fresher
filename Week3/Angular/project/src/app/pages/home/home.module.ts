@@ -8,6 +8,7 @@ import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ManagementService } from 'src/app/shared/services/management.service';
 
 const routes: Routes = [
   {
@@ -46,5 +47,6 @@ const routes: Routes = [
     RegisterComponent,
   ],
   imports: [RouterModule.forChild(routes), FormsModule, CommonModule],
+  providers: [ManagementService],
 })
 export class HomeModule {}

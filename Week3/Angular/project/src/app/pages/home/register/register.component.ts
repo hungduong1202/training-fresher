@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ManagementService } from 'src/app/shared/services/management.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
   isEditting: boolean = false;
 
-  constructor() {}
+  constructor(private managementService: ManagementService) {}
 
   ngOnInit(): void {}
 
@@ -35,20 +36,30 @@ export class RegisterComponent implements OnInit {
     this.registerForm.resetForm();
   }
 
-  handleDelete(user: User) {
+  handleDelete(username: string) {
     // const index = this.userList.findIndex(
     //   (ele) => ele.username === user.username
     // );
     // this.userList.splice(index, 1);
-    this.userList = this.userList.filter(
-      (ele) => ele.username !== user.username
+
+    // this.userList = this.userList.filter(
+    //   (ele) => ele.username !== user.username
+    // );
+
+    this.userList = this.managementService.remove(
+      this.userList,
+      'username',
+      username
     );
   }
 
   handleEdit(user: User) {
-    this.registerForm.setValue(user);
+    // this.registerForm.setValue(user);
+    // this.isEditting = true;
+    // this.registerForm.form.markAsPristine();
+
+    this.managementService.edit(this.registerForm, user);
     this.isEditting = true;
-    this.registerForm.form.markAsPristine();
   }
 
   checkIsExisted(user: string) {
