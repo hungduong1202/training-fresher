@@ -22,7 +22,7 @@
       <li class="nav-item">
         <a [routerLink]="'faq'" class="nav-link" href="#">FAQ</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a
           [routerLink]="['movie', '123']"
           [queryParams]="{ userId: 10, bookingId: 200 }"
@@ -30,9 +30,15 @@
           href="#"
           >Movie</a
         >
+      </li> -->
+      <li class="nav-item">
+        <a (click)="navigateToMovie()" class="nav-link">Movie</a>
       </li>
       <li class="nav-item">
         <a [routerLink]="'movie-list'" class="nav-link" href="#">Movie List</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="'register'" class="nav-link" href="#">Register</a>
       </li>
     </ul>
   </div>

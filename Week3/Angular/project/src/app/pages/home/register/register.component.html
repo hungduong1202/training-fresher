@@ -1,0 +1,128 @@
+<div class="w-50 mx-auto">
+  <form #registerForm="ngForm" (ngSubmit)="save(registerForm.value)">
+    <div class="card">
+      <div class="card-header"><h3>Register</h3></div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="Username">Username</label>
+          <input
+            readonly="isEditting"
+            type="text"
+            #usernameInput="ngModel"
+            ngModel
+            name="username"
+            class="form-control"
+            required
+            minlength="5"
+            maxlength="16"
+          />
+          <p *ngIf="checkIsExisted(usernameInput['value'])" class="text-danger">
+            User is existed !
+          </p>
+          <div *ngIf="usernameInput.errors && usernameInput.touched">
+            <p *ngIf="usernameInput.errors['required']" class="text-danger">
+              Username is required
+            </p>
+            <p
+              *ngIf="
+                usernameInput.errors['minlength'] ||
+                usernameInput.errors['maxlength']
+              "
+              class="text-danger"
+            >
+              Username should have 5 - 10 characters
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Email">Email</label>
+          <input
+            type="text"
+            #emailInput="ngModel"
+            ngModel
+            name="email"
+            class="form-control"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            required
+          />
+          <div *ngIf="emailInput.errors && emailInput.touched">
+            <p *ngIf="emailInput.errors['pattern']" class="text-danger">
+              Email is invalid
+            </p>
+            <p *ngIf="emailInput.errors['required']" class="text-danger">
+              Email is required
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Full Name">Full Name</label>
+          <input
+            type="text"
+            #fullnameInput="ngModel"
+            ngModel
+            name="fullName"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Phone Number">Phone Number</label>
+          <input
+            type="text"
+            #phoneNumberInput="ngModel"
+            ngModel
+            name="phoneNumber"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <button
+          type="submit"
+          [disabled]="
+            registerForm.pristine ||
+            registerForm.invalid ||
+            checkIsExisted(usernameInput.value)
+          "
+          class="btn btn-info me-2 text-white"
+        >
+          SAVE
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <br />
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Full Name</th>
+        <th>Phone Number</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.fullName }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td>
+          <button
+            class="btn btn-primary btn-sm me-1"
+            (click)="handleEdit(user)"
+          >
+            Edit
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="handleDelete(user)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

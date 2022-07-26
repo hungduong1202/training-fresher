@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -7,11 +7,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent implements OnInit {
+  movieId: number = 0;
+  userId: number = 0;
+  bookingId: number = 0;
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const movieId = this.activatedRoute.snapshot.params['id'];
-    const queryParams = this.activatedRoute.snapshot.queryParams;
-    console.log(movieId, queryParams);
+    const { userId, bookingId } = this.activatedRoute.snapshot.queryParams;
+
+    this.userId = userId;
+    this.bookingId = bookingId;
+
+    this.activatedRoute.params.subscribe({
+      next: (params: Params) => {
+        this.movieId = params['id'];
+      },
+      error: () => {},
+      complete: () => {},
+    });
   }
 }

@@ -5,6 +5,9 @@ import { MovieComponent } from './movie/movie.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
+import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -25,6 +28,10 @@ const routes: Routes = [
         path: 'movie/:id',
         component: MovieComponent,
       },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
     ],
   },
 ];
@@ -36,7 +43,8 @@ const routes: Routes = [
     MovieComponent,
     MovieListComponent,
     HomeComponent,
+    RegisterComponent,
   ],
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), FormsModule, CommonModule],
 })
 export class HomeModule {}
