@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'http://movienew-prod.cybersoft.edu.vn/api',
 };

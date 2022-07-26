@@ -6,9 +6,10 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ManagementService } from 'src/app/shared/services/management.service';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent,
       },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
     ],
   },
 ];
@@ -45,8 +50,14 @@ const routes: Routes = [
     MovieListComponent,
     HomeComponent,
     RegisterComponent,
+    LoginComponent,
   ],
-  imports: [RouterModule.forChild(routes), FormsModule, CommonModule],
+  imports: [
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
   providers: [ManagementService],
 })
 export class HomeModule {}
