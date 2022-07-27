@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ManagementService } from 'src/app/shared/services/management.service';
+import { ManagementService } from '@services/management.service';
+// import { ManagementService } from 'src/app/shared/services/management.service';
 
 @Component({
   selector: 'app-register',

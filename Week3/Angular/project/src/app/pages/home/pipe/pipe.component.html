@@ -1,0 +1,14 @@
+<div class="w-25 mx-auto">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ product.name | uppercase }}</h4>
+      <p class="card-text">{{ product.description | lowercase }}</p>
+      <p class="card-text">{{ product.price | currency }}</p>
+      <p class="card-text">{{ product.percent | percent: "2.3-5" }}</p>
+      <p class="card-text">{{ product.startDate | date | uppercase }}</p>
+      <p class="card-text">{{ product.category | json }}</p>
+      <p class="card-text">{{ product.lines | slice: 1:3 }}</p>
+      <p class="card-text">{{ username | welcome: true }}</p>
+    </div>
+  </div>
+</div>

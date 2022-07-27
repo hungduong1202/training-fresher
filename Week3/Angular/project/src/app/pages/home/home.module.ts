@@ -8,10 +8,15 @@ import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ManagementService } from 'src/app/shared/services/management.service';
+// import { ManagementService } from 'src/app/shared/services/management.service';
 import { LoginComponent } from './login/login.component';
 import { AdminGuard } from 'src/app/core/guards/admin.guard';
 import { FormGuard } from 'src/app/core/guards/form.guard';
+import { PipeComponent } from './pipe/pipe.component';
+import { WelcomePipe } from './pipe/welcome.pipe';
+import { LifeCycleComponent } from './life-cycle/life-cycle.component';
+import { LifeCycleChildComponent } from './life-cycle/life-cycle-child.component';
+import { ManagementService } from '@services/management.service';
 
 const routes: Routes = [
   {
@@ -42,6 +47,14 @@ const routes: Routes = [
         component: LoginComponent,
         canDeactivate: [FormGuard],
       },
+      {
+        path: 'pipe',
+        component: PipeComponent,
+      },
+      {
+        path: 'life-cycle',
+        component: LifeCycleComponent,
+      },
     ],
   },
 ];
@@ -55,6 +68,10 @@ const routes: Routes = [
     HomeComponent,
     RegisterComponent,
     LoginComponent,
+    PipeComponent,
+    WelcomePipe,
+    LifeCycleComponent,
+    LifeCycleChildComponent,
   ],
   imports: [
     RouterModule.forChild(routes),

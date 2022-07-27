@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light mb-5">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a [routerLinkActive]="'text-danger'" class="navbar-brand" href="#">Navbar</a>
   <button
     class="navbar-toggler d-lg-none"
     type="button"
@@ -14,13 +14,31 @@
   <div class="collapse navbar-collapse" id="collapsibleNavId">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a [routerLink]="'movie-list'" class="nav-link" href="#">Home</a>
+        <a
+          [routerLinkActive]="'text-danger'"
+          [routerLink]="'movie-list'"
+          class="nav-link"
+          href="#"
+          >Home</a
+        >
       </li>
       <li class="nav-item">
-        <a [routerLink]="'about'" class="nav-link" href="#">About</a>
+        <a
+          [routerLinkActive]="'text-danger'"
+          [routerLink]="'about'"
+          class="nav-link"
+          href="#"
+          >About</a
+        >
       </li>
       <li class="nav-item">
-        <a [routerLink]="'faq'" class="nav-link" href="#">FAQ</a>
+        <a
+          [routerLinkActive]="'text-danger'"
+          [routerLink]="'faq'"
+          class="nav-link"
+          href="#"
+          >FAQ</a
+        >
       </li>
       <!-- <li class="nav-item">
         <a
@@ -32,17 +50,67 @@
         >
       </li> -->
       <li class="nav-item">
-        <a (click)="navigateToMovie()" class="nav-link">Movie</a>
+        <a
+          [routerLinkActive]="'text-danger'"
+          (click)="navigateToMovie()"
+          class="nav-link"
+          >Movie</a
+        >
       </li>
       <li class="nav-item">
-        <a [routerLink]="'movie-list'" class="nav-link" href="#">Movie List</a>
+        <a
+          [routerLinkActive]="'text-danger'"
+          [routerLink]="'movie-list'"
+          class="nav-link"
+          href="#"
+          >Movie List</a
+        >
       </li>
       <li class="nav-item">
-        <a [routerLink]="'register'" class="nav-link" href="#">Register</a>
+        <a
+          [routerLinkActive]="'text-danger'"
+          [routerLink]="'pipe'"
+          class="nav-link"
+          href="#"
+          >Pipe</a
+        >
       </li>
       <li class="nav-item">
-        <a [routerLink]="'login'" class="nav-link" href="#">Login</a>
+        <a
+          [routerLinkActive]="'text-danger'"
+          [routerLink]="'life-cycle'"
+          class="nav-link"
+          href="#"
+          >LifeCycle</a
+        >
       </li>
+
+      <ng-container *ngIf="!loginInfo; else tmpWelcome">
+        <li class="nav-item">
+          <a
+            [routerLinkActive]="'text-danger'"
+            [routerLink]="'register'"
+            class="nav-link"
+            href="#"
+            >Register</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            [routerLinkActive]="'text-danger'"
+            [routerLink]="'login'"
+            class="nav-link"
+            href="#"
+            >Login</a
+          >
+        </li>
+      </ng-container>
+
+      <ng-template #tmpWelcome
+        ><li class="nav-item">
+          <p class="nav-link fw-bold">Hello {{ loginInfo?.hoTen }}</p>
+        </li></ng-template
+      >
     </ul>
   </div>
 </nav>

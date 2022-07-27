@@ -1,0 +1,23 @@
+<div class="w-50 mx-auto">
+  <div class="d-flex">
+    <div class="form-group d-flex">
+      <input #usernameInput type="text" class="form-control" />
+      <button
+        class="btn btn-info"
+        (click)="this.username = usernameInput.value"
+      >
+        SAVE
+      </button>
+
+      <button
+        class="btn btn-danger"
+        (click)="this.isDestroy = !this.isDestroy"
+        [textContent]="this.isDestroy ? 'CREATE' : 'DESTROY'"
+      ></button>
+    </div>
+  </div>
+  <app-life-cycle-child
+    *ngIf="!isDestroy"
+    [username]="username"
+  ></app-life-cycle-child>
+</div>

@@ -2,6 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '@services/auth.service';
+import { LocalStorageService } from '@services/local-storage.service';
+import { StoreService } from '@services/store.service';
 import { map } from 'rxjs';
 import { LOGIN_INFO_KEY } from 'src/app/shared/common/constants';
 import {
@@ -9,8 +12,10 @@ import {
   ResponseBodyDto,
   SubmitLoginDto,
 } from 'src/app/shared/common/interfaces';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+// import { AuthService } from 'src/app/shared/services/auth.service';
+
+// import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+// import { StoreService } from 'src/app/shared/services/store.service';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +39,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private localStorageService: LocalStorageService,
-    private router: Router
+    private router: Router,
+    private storeService: StoreService
   ) {}
 
   isLoading: boolean = false;
@@ -48,8 +54,11 @@ export class LoginComponent implements OnInit {
     this.authService.login(submitDto).subscribe({
       next: (result: ResponseBodyDto<LoginDto>) => {
         this.localStorageService.set<LoginDto>(LOGIN_INFO_KEY, result.content);
+        this.storeService.setLoginInfo(result.content);
         alert('Login successfully');
+        this.loginForm.markAsPristine();
         this.router.navigate(['home/movie-list']);
+        // console.log(this.loginForm);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error);

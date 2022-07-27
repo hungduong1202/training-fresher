@@ -6,9 +6,10 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
+import { LocalStorageService } from '@services/local-storage.service';
 import { LOGIN_INFO_KEY } from 'src/app/shared/common/constants';
 import { LoginDto } from 'src/app/shared/common/interfaces';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+// import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AdminGuard implements CanActivate {
