@@ -20,3 +20,18 @@ export interface LoginDto {
   maLoaiNguoiDung: string;
   accessToken: string;
 }
+
+export interface MovieDto {
+  maPhim: number;
+  tenPhim: string;
+  biDanh: string;
+  trailer: string;
+  hinhAnh: string;
+  moTa: string;
+  maNhom: string;
+  ngayKhoiChieu: string;
+  danhGia: number;
+  hot: boolean;
+  dangChieu: boolean;
+  sapChieu: boolean;
+}

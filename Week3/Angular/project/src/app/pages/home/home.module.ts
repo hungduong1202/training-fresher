@@ -17,6 +17,8 @@ import { WelcomePipe } from './pipe/welcome.pipe';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { LifeCycleChildComponent } from './life-cycle/life-cycle-child.component';
 import { ManagementService } from '@services/management.service';
+import { MovieListResolver } from 'src/app/shared/resolvers/movie/movie-list.resolver';
+import { MovieResolver } from 'src/app/shared/resolvers/movie/movie.resolver';
 
 const routes: Routes = [
   {
@@ -33,10 +35,17 @@ const routes: Routes = [
       {
         path: 'movie-list',
         component: MovieListComponent,
+        resolve: {
+          movieList: MovieListResolver,
+        },
       },
       {
         path: 'movie/:id',
         component: MovieComponent,
+        resolve: {
+          movieDetail: MovieResolver,
+          // movieList: MovieListResolver,
+        },
       },
       {
         path: 'register',

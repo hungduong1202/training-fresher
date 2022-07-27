@@ -1,5 +1,16 @@
-<div>
+<!-- <div>
   <p>Movie id: {{ movieId }}</p>
   <p>Booking id: {{ bookingId }}</p>
   <p>User id: {{ userId }}</p>
+</div> -->
+
+<div *ngIf="movie$ | async as movie" class="w-25 mx-auto">
+  <div class="card">
+    <img class="card-img-top" src="{{ movie.hinhAnh }}" w="300" alt="..." />
+    <div class="card-body">
+      <h4 class="card-title fw-bold">{{ movie.tenPhim }}</h4>
+      <p class="card-text">{{ movie.moTa }}</p>
+    </div>
+  </div>
+  <div></div>
 </div>
