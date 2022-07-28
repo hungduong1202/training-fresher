@@ -1,0 +1,38 @@
+<c-modal [visible]="modalVisible" (visibleChange)="handleChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Edit User</h5>
+    <button cButtonClose (click)="handleToggleModal()"></button>
+  </c-modal-header>
+  <c-modal-body>
+    <c-row class="mb-3">
+      <label cLabel="col" class="col-sm-4"> User </label>
+      <c-col [sm]="8">
+        <input cFormControl disabled [(ngModel)]="user.taiKhoan" />
+      </c-col>
+    </c-row>
+    <c-row class="mb-3">
+      <label cLabel="col" class="col-sm-4"> Username </label>
+      <c-col [sm]="8">
+        <input cFormControl [(ngModel)]="user.hoTen" />
+      </c-col>
+    </c-row>
+    <c-row class="mb-3">
+      <label cLabel="col" class="col-sm-4"> Email </label>
+      <c-col [sm]="8">
+        <input cFormControl [(ngModel)]="user.email" />
+      </c-col>
+    </c-row>
+    <c-row class="mb-3">
+      <label cLabel="col" class="col-sm-4"> Phone number </label>
+      <c-col [sm]="8">
+        <input cFormControl [(ngModel)]="user.soDT" />
+      </c-col>
+    </c-row>
+  </c-modal-body>
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="handleToggleModal()">Close</button>
+    <button cButton color="primary" (click)="handleSubmit()">
+      Save changes
+    </button>
+  </c-modal-footer>
+</c-modal>

@@ -1,0 +1,28 @@
+<table cTable hover color="dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">User</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList; let i = index" (click)="handleEdit(user)">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ user.hoTen }}</td>
+      <td>{{ user.taiKhoan }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.soDT }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<app-user-modal
+  [modalVisible]="visible"
+  (changeEvent)="visible = $event"
+  [user]="userDetail"
+  (submitEdit)="editSubmit()"
+  (toggleModal)="toggleModal()"
+></app-user-modal>
