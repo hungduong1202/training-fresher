@@ -5,7 +5,12 @@
     >
   </li>
   <li cPageItem *ngFor="let item of fakeArray; let i = index">
-    <a cPageLink (click)="getUserList(i + 1)">{{ i + 1 }}</a>
+    <a
+      [ngClass]="{ 'current-page': page === i + 1 }"
+      cPageLink
+      (click)="getUserList(i + 1)"
+      >{{ i + 1 }}</a
+    >
   </li>
   <!-- <li cPageItem>
     <a cPageLink (click)="getUserList(1)">1</a>
