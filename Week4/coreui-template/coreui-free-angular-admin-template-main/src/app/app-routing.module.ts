@@ -33,6 +33,13 @@ const routes: Routes = [
           import('./views/user/user.module').then((m) => m.UserModule),
       },
       {
+        path: 'create-user',
+        loadChildren: () =>
+          import('./views/create-user/create-user.module').then(
+            (m) => m.CreateUserModule
+          ),
+      },
+      {
         path: 'theme',
         loadChildren: () =>
           import('./views/theme/theme.module').then((m) => m.ThemeModule),

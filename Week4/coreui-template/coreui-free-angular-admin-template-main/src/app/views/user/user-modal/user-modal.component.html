@@ -25,12 +25,20 @@
     <c-row class="mb-3">
       <label cLabel="col" class="col-sm-4"> Phone number </label>
       <c-col [sm]="8">
-        <input cFormControl [(ngModel)]="user.soDT" />
+        <input cFormControl [(ngModel)]="user.soDt" />
+      </c-col>
+    </c-row>
+    <c-row class="mb-3">
+      <label cLabel="col" class="col-sm-4"> Password </label>
+      <c-col [sm]="8">
+        <input cFormControl [(ngModel)]="user.matKhau" type="password" />
       </c-col>
     </c-row>
   </c-modal-body>
   <c-modal-footer>
-    <button cButton color="secondary" (click)="handleToggleModal()">Close</button>
+    <button cButton color="secondary" (click)="handleToggleModal()">
+      Close
+    </button>
     <button cButton color="primary" (click)="handleSubmit()">
       Save changes
     </button>

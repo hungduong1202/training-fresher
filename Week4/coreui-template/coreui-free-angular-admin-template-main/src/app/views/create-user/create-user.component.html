@@ -1,0 +1,60 @@
+<div class="mb-3">
+  <form (submit)="onSubmit()">
+    <div class="mb-3">
+      <label cLabel>User</label>
+      <input
+        cFormControl
+        type="text"
+        [(ngModel)]="user.taiKhoan"
+        name="taiKhoan"
+      />
+    </div>
+    <div class="mb-3">
+      <label cLabel>Name</label>
+      <input cFormControl type="text" [(ngModel)]="user.hoTen" name="hoTen" />
+    </div>
+    <div class="mb-3">
+      <label cLabel>Email</label>
+      <input cFormControl type="email" [(ngModel)]="user.email" name="email" />
+    </div>
+    <div class="mb-3">
+      <label cLabel>Phone number</label>
+      <input cFormControl type="number" [(ngModel)]="user.soDt" name="soDt" />
+    </div>
+    <div class="mb-3">
+      <label cLabel>Password</label>
+      <input
+        cFormControl
+        type="password"
+        [(ngModel)]="user.matKhau"
+        name="matKhau"
+      />
+    </div>
+    <input cButton color="primary" type="submit" />
+  </form>
+</div>
+
+<!-- <c-row class="mb-3">
+  <label cLabel="col" class="col-sm-4"> User </label>
+  <c-col [sm]="8">
+    <input cFormControl disabled [(ngModel)]="user.taiKhoan" />
+  </c-col>
+</c-row>
+<c-row class="mb-3">
+  <label cLabel="col" class="col-sm-4"> Username </label>
+  <c-col [sm]="8">
+    <input cFormControl [(ngModel)]="user.hoTen" />
+  </c-col>
+</c-row>
+<c-row class="mb-3">
+  <label cLabel="col" class="col-sm-4"> Email </label>
+  <c-col [sm]="8">
+    <input cFormControl [(ngModel)]="user.email" />
+  </c-col>
+</c-row>
+<c-row class="mb-3">
+  <label cLabel="col" class="col-sm-4"> Phone number </label>
+  <c-col [sm]="8">
+    <input cFormControl [(ngModel)]="user.soDT" />
+  </c-col>
+</c-row> -->

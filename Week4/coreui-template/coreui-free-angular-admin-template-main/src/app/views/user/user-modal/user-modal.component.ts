@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Item } from 'src/shared/common/interfaces';
 
 @Component({
   selector: 'app-user-modal',
@@ -9,7 +10,7 @@ export class UserModalComponent implements OnInit {
   @Input() modalVisible: any;
   @Output() changeEvent = new EventEmitter();
   @Output() submitEdit = new EventEmitter();
-  @Input() user!: User;
+  @Input() user!: Item;
   @Output() toggleModal = new EventEmitter();
 
   constructor() {}

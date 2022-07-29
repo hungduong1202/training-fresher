@@ -1,3 +1,28 @@
+<c-pagination aria-label="Page navigation example">
+  <li cPageItem>
+    <a cPageLink aria-label="Previous" (click)="prePage()"
+      ><span aria-hidden="true">&laquo;</span></a
+    >
+  </li>
+  <li cPageItem *ngFor="let item of fakeArray; let i = index">
+    <a cPageLink (click)="getUserList(i + 1)">{{ i + 1 }}</a>
+  </li>
+  <!-- <li cPageItem>
+    <a cPageLink (click)="getUserList(1)">1</a>
+  </li>
+  <li cPageItem>
+    <a cPageLink (click)="getUserList(2)">2</a>
+  </li>
+  <li cPageItem>
+    <a cPageLink (click)="getUserList(3)">3</a>
+  </li> -->
+  <li cPageItem>
+    <a cPageLink aria-label="Next" (click)="nextPage()"
+      ><span aria-hidden="true">&raquo;</span></a
+    >
+  </li>
+</c-pagination>
+
 <table cTable hover color="dark">
   <thead>
     <tr>
@@ -14,7 +39,7 @@
       <td>{{ user.hoTen }}</td>
       <td>{{ user.taiKhoan }}</td>
       <td>{{ user.email }}</td>
-      <td>{{ user.soDT }}</td>
+      <td>{{ user.soDt }}</td>
     </tr>
   </tbody>
 </table>
