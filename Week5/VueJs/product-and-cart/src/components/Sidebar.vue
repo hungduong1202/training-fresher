@@ -23,15 +23,18 @@
             </tr>
           </thead>
           <tbody>
-            <!-- https://youtu.be/FXpIoQ_rT_c?t=11905 -->
-            <tr>
-              <td><i class="icofont-carrot icofont-3x"></i></td>
-              <td>Carrot</td>
-              <td>$1.00</td>
-              <td class="center">1</td>
-              <td>$1.00</td>
+            <tr v-for="(quantity, key, i) in cart" :key="i">
+
+              <td><i class="icofont-3x" :class="['icofont-' + getIcon(key)]"></i></td>
+
+              <td>{{ key }}</td>
+              <td>${{ getPrice(key) }}</td>
+              <td class="center">{{ quantity }}</td>
+              <td>${{ (quantity * getPrice(key)).toFixed(2) }}</td>
               <td class="center">
-                <button class="btn btn-light cart-remove">&times;</button>
+                <button @click="remove(key)" class="btn btn-light cart-remove">
+                  &times;
+                </button>
               </td>
             </tr>
           </tbody>
@@ -39,8 +42,8 @@
 
         <p class="center"><em>No items in cart</em></p>
         <div class="spread">
-          <span><strong>Total:</strong> $1.00</span>
-          <button class="btn btn-light">Checkout</button>
+          <span><strong>Total: </strong>${{ calculateTotal() }}</span>
+          <button class="btn btn-light" @click="check">Checkout</button>
         </div>
       </div>
     </div>
@@ -59,9 +62,15 @@ export default {
     },
     calculateTotal () {
       const total = Object.entries(this.cart).reduce((acc, curr, index) => {
-        return acc + (curr[1] * this.getPrice(curr[0]))
+        return acc + curr[1] * this.getPrice(curr[0])
       }, 0)
       return total.toFixed(2)
+    },
+    getIcon (name) {
+      const product = this.inventory.find((p) => {
+        return p.name === name
+      })
+      return product.icon
     }
   }
 }
