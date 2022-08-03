@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-        <Button :text="showAddTask ? 'Close' : 'Add'" :color="showAddTask ? 'red' : 'green'"
+        <Button v-show="homePage()" :text="showAddTask ? 'Close' : 'Add'" :color="showAddTask ? 'red' : 'green'"
             @click="$emit('toggle-add-task')" />
     </header>
 </template>
@@ -14,7 +14,12 @@ export default {
         title: { type: String, default: "Hello World" }, showAddTask: { type: Boolean }
     },
     components: { Button },
-    emits: ['toggle-add-task']
+    emits: ['toggle-add-task'],
+    methods: {
+        homePage() {
+            return this.$route.path === '/'
+        }
+    }
 }
 </script>
 
