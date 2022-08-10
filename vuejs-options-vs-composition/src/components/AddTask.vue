@@ -2,7 +2,7 @@
     <form @submit.prevent="onSubmit" class="add-form">
         <div class="form-control">
             <label>Task</label>
-            <input type="text" v-model="text" name="text" placeholder="Add Task" />
+            <input type="text" v-model="text" name="text" placeholder="Add Task" ref="input" />
         </div>
         <div class="form-control">
             <label>Day & Time</label>
@@ -19,9 +19,12 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import { onMounted } from '@vue/runtime-core'
 export default {
     props: { showAddTask: Boolean },
     setup(props, { emit }) {
+        const input = ref(null)
+
         const onSubmit = () => {
 
             const newTask = {
@@ -40,7 +43,12 @@ export default {
 
         const reminder = ref(false)
 
-        return { onSubmit, text, day, reminder }
+        onMounted(() => {
+            input.value.focus()
+        })
+
+        return { onSubmit, text, day, reminder, input }
+
     },
 }
 </script>
